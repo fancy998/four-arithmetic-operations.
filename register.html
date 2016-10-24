@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>用户注册</title>
+        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <!-- Custom Theme files -->
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <!-- Custom Theme files -->
+        <style type="text/css">
+        #one{
+            width: 600px;
+            margin: 0 auto;
+            margin-top: 100px;
+/*            text-align: center;*/
+/*            display: table-cell;*/
+/*            vertical-align: middle;*/
+            background-color: pink;
+        }
+        #two{
+            background-color: #00BBFF;
+        }
+        th{
+            width: 150px;
+        }
+        td{
+            width: 450px;
+        }
+        </style>
+    </head>
+    
+    <body>
+    <div id = "one">
+        <h1 align="center" >欢迎来到情歌悠扬丶</h1>
+        <form action="#" method="get" name="form1" onsubmit="return check()">
+        <!-- post / get  -->
+        <!-- onsubmit / onblurout -->
+        <table border="10" style="width:600px" >
+            <tr>
+                <th colspan="3" align="center"><b>用户注册</b></th>
+            </tr>
+            <tr>
+                <th>用户名:</th>
+                <td><input type="text" name="username" size="15"></td>
+            </tr>
+            <tr>
+                <th>密码:</th>
+                <td><input type="password" name="password" size="15"></td>
+            </tr>
+            <tr>
+                <th>确认密码:</th>
+                <td><input type="password" name="rePassword" size="15"></td>
+            </tr>
+
+            <tr>
+                <th>性别:</th>
+                <td>女<input type="radio" name="sex" value="0">男<input type="radio" name="sex" value="1"></td>
+            </tr>
+            <tr>
+                <th>年级:</th>
+                <td>
+                    <select name="garde">
+                        <option value="00">---请选择年级---</option>
+                        <option value="01">一年级</option>
+                        <option value="02">二年级</option>
+                        <option value="03">三年级</option>
+                        <option value="04">四年级</option>
+                        <option value="05">五年级</option>
+                        <option value="06">六年级</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="提交" value="注册"> <input type="reset" name="重置" ></td>
+            </tr>
+
+
+        </table>
+            
+        </form>
+        <div id = 'two' align="center" >
+            <a href="http://www.baidu.com" target="_blank">百度</a>
+            <a href="mailto:xx@itcast.cn">联系我们</a>
+            <a href="thunder://eeeeeeeeeeeeeeee">点击下载</a>
+        </div>
+    </div>
+    </body>
+    <script type="text/javascript">
+    document.form1.username.onblur=function(){
+        checkusername();
+    }
+
+    function checkusername () {
+        var username = document.form1.username.value;
+
+        var nameReg = /^[a-zA-Z][a-zA-Z0-9]{5,9}$/;
+
+        if (nameReg.test(username)) {
+            removeError(document.form1.username);
+            return true;
+        } else {
+            //alert("首字符不能使用数字,长度在6到10之间");
+            addError(document.form1.username,"首字符不能使用数字,长度在6到10之间.")
+            return false;
+        }
+    }
+
+    function checkGrade () {
+        var select = document.form1.garde;
+        var index = select.selectedIndex;
+        if (!index){
+            addError(select,"请选择年级.")
+            return false;
+        }
+        else {
+            return true;    
+        }
+
+    }
+
+    function check(){
+        return checkGrade();
+/*        return checkusername();*/
+    }
+
+    function addError(where,what){
+        if(where.parentNode.getElementsByTagName("font").length>0){
+            return;
+        }
+        var font = document.createElement("font");
+        font.setAttribute("color","red");
+        font.innerHTML = what;
+        where.parentNode.appendChild(font);
+    }
+
+    function removeError (where) {
+        var font = where.parentNode.getElementsByTagName("font")[0];
+
+        if (font){
+            font.parentNode.removeChild(font);
+
+        }
+    }
+    </script>
+</html>
