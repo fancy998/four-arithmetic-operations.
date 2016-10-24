@@ -1,0 +1,25 @@
+create database ex;
+
+use ex;
+
+create table user(
+  id int NOT NULL auto_increment,
+  username varchar(50) ,
+  password varchar(10),
+   primary key(id)
+);
+
+
+INSERT INTO user(id, username, password) VALUES(NULL, 'cool', '123');
+INSERT INTO user(id, username, password) VALUES(NULL, 'cool0', '123');
+INSERT INTO user(id, username, password) VALUES(NULL, 'cool1', '123');
+INSERT INTO user(id, username, password) VALUES(NULL, 'cool2', '123');
+
+create table record(
+id int not null primary key auto_increment,
+user varchar(16) not null,
+antime timestamp not null default current_timestamp,
+usetime varchar(50) not null,
+score int not null,
+qclass int not null
+);
