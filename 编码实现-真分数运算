@@ -1,0 +1,33 @@
+编码实现-真分数运算
+public static String caculate(String s){
+    String ss = s;
+    String end = null;
+     
+    int a1 = ss.charAt(0)-'0';
+    int a2 = ss.charAt(2)-'0';
+    int b1 = ss.charAt(4)-'0';
+    int b2 = ss.charAt(6)-'0';
+    int c = 1;
+ 
+    if(ss.charAt(3)=='-')
+        c = -1;
+    int e1 = a1 * b2 + c * a2 * b1;
+    int e2 = a2 * b2;
+    int e11 = Math.abs(e1);
+    int e22 = Math.abs(e2);
+    if(e1 == 0)
+      end = 0+"";
+    else
+        if(e11 % e22 == 0){
+            end = e1/e2 +"";
+        }else if(e22 % e11 == 0){
+            if(e2/e1<0)
+                end = "-" + 1 + "/" +Math.abs(e2/e1);
+            else
+            end = 1 + "/" +e2/e1;
+        }else if(c == 1){
+            end = e11 + "/" + e22;
+            }else
+                end = "-" + e11 + "/" + e22;               
+    return end;
+}
